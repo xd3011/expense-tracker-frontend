@@ -22,7 +22,7 @@ const login = (user_name, password) => {
     .then((response) => {
       if (response.data.accessToken) {
         localStorage.setItem("accessToken", JSON.stringify(response.data.accessToken));
-        localStorage.setItem("refreshToken", JSON.stringify(response.data.refreshToken));
+        localStorage.setItem("uid", JSON.stringify(response.data.uid));
       }
 
       return response.data;
@@ -37,14 +37,18 @@ const logout = () => {
 };
 
 const getCurrentUser = () => {
-  return JSON.parse(localStorage.getItem("accessToken"));
+  return JSON.parse(localStorage.getItem("uid"));
 };
 
+const getAccessToken = () => {
+  return JSON.parse(localStorage.getItem("accessToken"));
+};
 const AuthService = {
   register,
   login,
   logout,
   getCurrentUser,
+  getAccessToken,
 }
 
 export default AuthService;
