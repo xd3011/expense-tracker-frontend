@@ -3,16 +3,19 @@ import styled from 'styled-components'
 import avatar from '../../img/avatar.png'
 import { signout } from '../../utils/Icons'
 import { menuItems } from '../../utils/menuItems'
-
+import { useGlobalContext } from '../../context/globalContext';
+import { dollar } from '../../utils/Icons';
+// import AuthService from "./services/auth.service";
 function Navigation({ active, setActive }) {
-
+    const {totalExpenses,incomes, expenses, totalIncome, totalBalance, getIncomes, getExpenses } = useGlobalContext()
+    
     return (
         <NavStyled>
             <div className="user-con">
                 <img src={avatar} alt="" />
                 <div className="text">
-                    <h2>CMCT</h2>
-                    <p>Your Money</p>
+                    <h2>Nguyen Duy Huy Hoang</h2>
+                    <p>{dollar} {totalBalance()}</p>
                 </div>
             </div>
             <ul className="menu-items">
