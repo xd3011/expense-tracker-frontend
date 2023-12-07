@@ -5,9 +5,19 @@ import { signout } from '../../utils/Icons'
 import { menuItems } from '../../utils/menuItems'
 import { useGlobalContext } from '../../context/globalContext';
 import { dollar } from '../../utils/Icons';
-// import AuthService from "./services/auth.service";
+import AuthService from "../../services/auth.service";
+import { useNavigate } from "react-router-dom";
 function Navigation({ active, setActive }) {
     const {totalExpenses,incomes, expenses, totalIncome, totalBalance, getIncomes, getExpenses } = useGlobalContext()
+    const [currentUser, setCurrentUser] = useState(undefined);
+    const navigate = useNavigate();
+    const handleSignOut = () => {
+        
+        AuthService.logout();
+        setCurrentUser(undefined); 
+        navigate("/");
+        window.location.reload();
+      };
     
     return (
         <NavStyled>
@@ -31,8 +41,8 @@ function Navigation({ active, setActive }) {
                 })}
             </ul>
             <div className="bottom-nav">
-                <li>
-                    {signout} Sign Out
+                <li onClick={handleSignOut}>
+                {signout} Sign Out
                 </li>
             </div>
         </NavStyled>
