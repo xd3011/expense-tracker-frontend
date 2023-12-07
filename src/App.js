@@ -83,7 +83,7 @@ const App = () => {
         <>
           <nav className="navbar navbar-expand navbar-dark bg-dark">
             <Link to={"/home"} className="navbar-brand">
-              haha
+              Expense Tracker
             </Link>
     
             <div className="navbar-nav ml-auto">
